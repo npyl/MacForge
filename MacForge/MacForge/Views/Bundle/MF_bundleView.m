@@ -685,8 +685,17 @@ extern NSDictionary *testing;
 - (void)pluginDelete {
     [PluginManager.sharedInstance pluginDelete:item];
     [PluginManager.sharedInstance readPlugins:nil];
-    [self.bundleInstall setTitle:@"GET"];
-    [self.bundleInstall setAction:@selector(installOrPurchase)];
+    
+    if ([[item objectForKey:@"payed"] boolValue]) {
+        self.bundleInstall.title = @"Verifying...";
+        [self verifyPurchased];
+        [self.bundleInstall setAction:@selector(installOrPurchase)];
+    } else {
+        [self.bundleInstall setEnabled:true];
+        self.bundleInstall.title = @"GET";
+        [self.bundleInstall setAction:@selector(pluginInstall)];
+    }
+    
     [self.bundleDelete setEnabled:false];
     [self viewWillDraw];
 }
