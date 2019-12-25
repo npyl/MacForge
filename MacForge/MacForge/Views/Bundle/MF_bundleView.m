@@ -668,14 +668,13 @@ extern NSDictionary *testing;
 }
 
 - (void)pluginInstall {
-    [PluginManager.sharedInstance pluginUpdateOrInstall:item :repoPackages];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [PluginManager.sharedInstance pluginUpdateOrInstall:item :repoPackages withCompletionHandler:^(BOOL res) {
         [PluginManager.sharedInstance readPlugins:nil];
         [self.bundleInstall setTitle:@"Open"];
         [self.bundleInstall setAction:@selector(pluginFinder)];
         [self.bundleDelete setEnabled:true];
         [self viewWillDraw];
-    });
+    }];
 }
 
 - (void)pluginFinder {

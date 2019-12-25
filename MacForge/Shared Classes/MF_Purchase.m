@@ -221,11 +221,10 @@ extern AppDelegate* myDelegate;
 
 + (void)pluginInstall:(MSPlugin*)plugin :(NSButton*)theButton :(NSString*)repo {
     NSDictionary* item = plugin.webPlist;
-    [PluginManager.sharedInstance pluginUpdateOrInstall:item :repo];
-    dispatch_async(dispatch_get_main_queue(), ^{
+    [PluginManager.sharedInstance pluginUpdateOrInstall:item :repo withCompletionHandler:^(BOOL res) {
         [PluginManager.sharedInstance readPlugins:nil];
         [theButton setTitle:@"OPEN"];
-    });
+    }];
 }
 
 @end
