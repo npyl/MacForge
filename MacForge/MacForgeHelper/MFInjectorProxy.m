@@ -16,7 +16,7 @@
 
 + (BOOL)injectPID:(pid_t)pid :(NSString*)bundlePath :(NSError **)error {
     NSConnection *c = [NSConnection connectionWithRegisteredName:@"com.w0lf.MacForge.Injector.mach" host:nil];
-    if (c != nil) {
+    if (c == nil) {
         NSAlert* alert = [[NSAlert alloc] init];
         [alert setMessageText:@"hol up"];
         [alert setInformativeText:@"snoopy dogg"];
