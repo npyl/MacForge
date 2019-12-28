@@ -19,7 +19,7 @@ target 'MacForge' do
 
   # Firebase
   # pod 'FirebaseABTesting'
-  # pod 'FirebaseAuth'
+  pod 'FirebaseAuth'
   # pod 'FirebaseDatabase'
   # pod 'FirebaseFirestore'
   # pod 'FirebaseFunctions'

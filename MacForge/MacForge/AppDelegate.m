@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+@import FirebaseCore;
+
 NSDictionary *testing;
 
 AppDelegate* myDelegate;
@@ -314,6 +316,8 @@ Boolean appSetupFinished = false;
     NSDate *methodFinish = [NSDate date];
     NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:appStart];
     NSLog(@"Launch time : %f Seconds", executionTime);
+    
+    [FIRApp configure];
 }
 
 - (void)executionTime:(NSString*)s {
