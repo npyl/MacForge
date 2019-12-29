@@ -8,18 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@import FirebaseAuth;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MF_accountManager : NSObject
 
-- (BOOL)createAccountWithUsername:(NSString *)username
+- (void)createAccountWithUsername:(NSString *)username
                             email:(NSString *)email
                       andPassword:(NSString *)password
-                            error:(NSError **)error;
-- (BOOL)loginAccountWithUsername:(NSString *)username
+            withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler;
+- (void)loginAccountWithUsername:(NSString *)username
                            email:(NSString *)email
                      andPassword:(NSString *)password
-                           error:(NSError **)error;
+           withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler;
 
 @end
 

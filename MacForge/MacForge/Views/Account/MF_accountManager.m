@@ -8,8 +8,6 @@
 
 #import "MF_accountManager.h"
 
-@import FirebaseAuth;
-
 @implementation MF_accountManager
 
 /*
@@ -18,22 +16,28 @@
  * @param error is set upon failure
  */
 
-- (BOOL)createAccountWithUsername:(NSString *)username
+- (void)createAccountWithUsername:(NSString *)username
                             email:(NSString *)email
                       andPassword:(NSString *)password
-                            error:(NSError **)error {
+            withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler {
     /* XXX
      * Should we check if this user exists?
      */
     NSLog(@"Creating account:");
     NSLog(@"%@\n%@\n%@", username, email, password);
     
-    return NO;
+    
+    [[FIRAuth auth] createUserWithEmail:email
+                               password:password
+                             completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
+                                 /* call handler */
+                                 handler(authResult, err);
+                             }];
 }
 - (BOOL)loginAccountWithUsername:(NSString *)username
                            email:(NSString *)email
                      andPassword:(NSString *)password
-                           error:(NSError **)error {
+    withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler {
     
     NSLog(@"Loging-in account:");
     NSLog(@"%@\n%@\n%@", username, email, password);

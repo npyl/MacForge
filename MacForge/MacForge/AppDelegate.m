@@ -319,7 +319,20 @@ Boolean appSetupFinished = false;
     NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:appStart];
     NSLog(@"Launch time : %f Seconds", executionTime);
     
+    /* Configure Firebase */
     [FIRApp configure];
+
+    /* Get signed-in user */
+    FIRUser *user = [FIRAuth auth].currentUser;
+    
+    /* Check if there actually is someone signed-in */
+    if (user) {
+        NSLog(@"Current signed-in user id: %@", user.uid);
+
+        // XXX Here we can choose the correct form for the user-section and populate it
+    } else {
+        NSLog(@"No user signed-in.");
+    }
 }
 
 - (void)executionTime:(NSString*)s {
@@ -1362,9 +1375,9 @@ Boolean appSetupFinished = false;
 // USER AUTHENTICATION
 // -------------------
 
+// XXX Later support Google account (OAuth?)
+
 - (IBAction)signUpUser:(id)sender {
-    NSError *error;
-    
     NSString *username = _loginUsername.stringValue;
     NSString *email = _loginEmail.stringValue;
     NSString *password = _loginPassword.stringValue;
@@ -1372,32 +1385,38 @@ Boolean appSetupFinished = false;
     MF_accountManager *accountManager = [[MF_accountManager alloc] init];
     
     /* Try to create a new account */
-    if (![accountManager createAccountWithUsername:username
-                                             email:email
-                                       andPassword:password
-                                             error:&error])
-    {
-        NSLog(@"Error creating a new user-account: %@", error);
-    }
+    [accountManager createAccountWithUsername:username
+                                        email:email
+                                  andPassword:password
+                        withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
+                            if (!err) {
+                                NSLog(@"Got result %@", authResult);
+                            }
+                            else {
+                                NSLog(@"%@", err);
+                            }
+                        }];
 }
 
 - (IBAction)signInUser:(id)sender {
-    NSError *error;
-    
     NSString *username = _loginUsername.stringValue;
     NSString *email = _loginEmail.stringValue;
     NSString *password = _loginPassword.stringValue;
     
     MF_accountManager *accountManager = [[MF_accountManager alloc] init];
     
-    /* Try to create a new account */
-    if (![accountManager loginAccountWithUsername:username
-                                            email:email
-                                      andPassword:password
-                                            error:&error])
-    {
-        NSLog(@"Error loging into user-account (%@): %@", username, error);
-    }
+    /* Try to log into an account */
+    [accountManager loginAccountWithUsername:username
+                                       email:email
+                                 andPassword:password
+                       withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
+                           if (!err) {
+                               NSLog(@"Got result %@", authResult);
+                           }
+                           else {
+                               NSLog(@"%@", err);
+                           }
+                       }];
 }
 
 @end
