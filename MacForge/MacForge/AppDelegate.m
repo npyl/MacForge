@@ -324,7 +324,7 @@ Boolean appSetupFinished = false;
 
     /* Get signed-in user */
     FIRUser *user = [FIRAuth auth].currentUser;
-    
+
     /* Check if there actually is someone signed-in */
     if (user) {
         NSLog(@"Current signed-in user id: %@", user.uid);
@@ -389,9 +389,6 @@ Boolean appSetupFinished = false;
     [self executionTime:@"addLoginItem"];
     [self executionTime:@"launchHelper"];
     [self executionTime:@"movePreviousPurchases"];
-    
-//    [FIRApp configure];
-//    [self executionTime:@"fireBaseSetup"];
     
     // Setup plugin table
     [_tblView registerForDraggedTypes:[NSArray arrayWithObject:NSFilenamesPboardType]];
@@ -1417,6 +1414,21 @@ Boolean appSetupFinished = false;
                                NSLog(@"%@", err);
                            }
                        }];
+}
+
+- (IBAction)signOutUSer:(id)sender {
+    NSError *signOutError;
+    
+    NSLog(@"Signing-out user: %@", [FIRAuth auth].currentUser.uid);
+    
+    BOOL status = [[FIRAuth auth] signOut:&signOutError];
+    
+    if (!status) {
+        NSLog(@"Error signing out: %@", signOutError);
+        return;
+    }
+    
+    NSLog(@"Successfully signed-out.");
 }
 
 @end

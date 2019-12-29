@@ -435,7 +435,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="fireBaseLogout:" target="Voe-Tx-rLC" id="XPX-Th-jhp"/>
+                                <action selector="signOutUSer:" target="Voe-Tx-rLC" id="r2p-6B-soU"/>
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkb-bb-4Sw">
@@ -590,7 +590,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="oGH-14-Lhi">
                         <rect key="frame" x="1" y="0.0" width="566" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ghc-3x-OmY" viewBased="YES" id="4xF-cC-8lT">
                                 <rect key="frame" x="0.0" y="0.0" width="566" height="350"/>
@@ -765,7 +765,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="DVZ-JD-MKi">
                         <rect key="frame" x="1" y="1" width="314" height="633"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="efl-VW-IC0" customClass="blacklistTable">
                                 <rect key="frame" x="0.0" y="0.0" width="314" height="633"/>
@@ -988,7 +988,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="d0Y-SJ-gXo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="seY-T0-xpO" customClass="MF_featuredTab">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="870"/>
@@ -3117,7 +3117,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Gnd-X9-ZTv">
                         <rect key="frame" x="0.0" y="0.0" width="717" height="1000"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <view fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66u-xo-VRo" customClass="MFFlippedView">
                                 <rect key="frame" x="0.0" y="0.0" width="713" height="1000"/>
