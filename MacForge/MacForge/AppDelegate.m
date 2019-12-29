@@ -1035,6 +1035,9 @@ Boolean appSetupFinished = false;
     }
     /* Secondary-views support; not included in tabViewButtons */
     else if ([sender isEqualTo:_tabSignIn]) {
+        NSString *analyticsTitle = @"👨‍💻 Account Sign-In";
+        [MSAnalytics trackEvent:@"Selected View" withProperties:@{@"View" : analyticsTitle}];
+        
         v = _tabSignIn;
     }
     
