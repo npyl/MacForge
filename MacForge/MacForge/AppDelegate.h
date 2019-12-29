@@ -18,14 +18,6 @@
 @import AppCenterAnalytics;
 @import AppCenterCrashes;
 
-// Firebase
-//@import FirebaseCore;
-//@import FirebaseDatabase;
-//@import FirebaseFirestore;
-//@import FirebaseAuth;
-//@import FirebaseStorage;
-//@import FirebaseCoreDiagnostics;
-
 // MacForgeKit
 @import MacForgeKit;
 

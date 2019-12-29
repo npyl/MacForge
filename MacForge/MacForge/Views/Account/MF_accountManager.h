@@ -12,6 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MF_accountManager : NSObject
 
+- (BOOL)createAccountWithUsername:(NSString *)username
+                            email:(NSString *)email
+                      andPassword:(NSString *)password
+                            error:(NSError **)error;
+- (BOOL)loginAccountWithUsername:(NSString *)username
+                           email:(NSString *)email
+                     andPassword:(NSString *)password
+                           error:(NSError **)error;
+
 @end
 
 NS_ASSUME_NONNULL_END

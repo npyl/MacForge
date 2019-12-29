@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "MF_accountManager.h"
+
 @import FirebaseCore;
 
 NSDictionary *testing;
@@ -1354,6 +1356,48 @@ Boolean appSetupFinished = false;
     }
     
     return specKey;
+}
+
+// -------------------
+// USER AUTHENTICATION
+// -------------------
+
+- (IBAction)signUpUser:(id)sender {
+    NSError *error;
+    
+    NSString *username = _loginUsername.stringValue;
+    NSString *email = _loginEmail.stringValue;
+    NSString *password = _loginPassword.stringValue;
+    
+    MF_accountManager *accountManager = [[MF_accountManager alloc] init];
+    
+    /* Try to create a new account */
+    if (![accountManager createAccountWithUsername:username
+                                             email:email
+                                       andPassword:password
+                                             error:&error])
+    {
+        NSLog(@"Error creating a new user-account: %@", error);
+    }
+}
+
+- (IBAction)signInUser:(id)sender {
+    NSError *error;
+    
+    NSString *username = _loginUsername.stringValue;
+    NSString *email = _loginEmail.stringValue;
+    NSString *password = _loginPassword.stringValue;
+    
+    MF_accountManager *accountManager = [[MF_accountManager alloc] init];
+    
+    /* Try to create a new account */
+    if (![accountManager loginAccountWithUsername:username
+                                            email:email
+                                      andPassword:password
+                                            error:&error])
+    {
+        NSLog(@"Error loging into user-account (%@): %@", username, error);
+    }
 }
 
 @end

@@ -8,7 +8,38 @@
 
 #import "MF_accountManager.h"
 
+@import FirebaseAuth;
+
 @implementation MF_accountManager
+
+/*
+ * @returns YES upon success
+ *          NO  upon failure
+ * @param error is set upon failure
+ */
+
+- (BOOL)createAccountWithUsername:(NSString *)username
+                            email:(NSString *)email
+                      andPassword:(NSString *)password
+                            error:(NSError **)error {
+    /* XXX
+     * Should we check if this user exists?
+     */
+    NSLog(@"Creating account:");
+    NSLog(@"%@\n%@\n%@", username, email, password);
+    
+    return NO;
+}
+- (BOOL)loginAccountWithUsername:(NSString *)username
+                           email:(NSString *)email
+                     andPassword:(NSString *)password
+                           error:(NSError **)error {
+    
+    NSLog(@"Loging-in account:");
+    NSLog(@"%@\n%@\n%@", username, email, password);
+    
+    return NO;
+}
 
 /*
 
