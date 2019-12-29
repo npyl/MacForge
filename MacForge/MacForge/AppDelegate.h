@@ -54,6 +54,7 @@
 @property IBOutlet NSView *tabMain;
 @property IBOutlet NSView *tabAbout;
 @property IBOutlet NSView *tabAccount;
+@property (weak) IBOutlet NSView *tabSignIn;
 @property IBOutlet NSView *tabPlugins;
 @property IBOutlet NSView *tabPreferences;
 @property IBOutlet NSView *tabSources;

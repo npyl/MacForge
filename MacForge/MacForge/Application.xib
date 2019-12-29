@@ -434,9 +434,6 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <action selector="signOutUSer:" target="Voe-Tx-rLC" id="r2p-6B-soU"/>
-                            </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkb-bb-4Sw">
                             <rect key="frame" x="-34" y="84" width="190" height="17"/>
@@ -590,7 +587,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="oGH-14-Lhi">
                         <rect key="frame" x="1" y="0.0" width="566" height="375"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ghc-3x-OmY" viewBased="YES" id="4xF-cC-8lT">
                                 <rect key="frame" x="0.0" y="0.0" width="566" height="350"/>
@@ -715,6 +712,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOu-ln-qaI">
+                    <rect key="frame" x="499" y="452" width="93" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Sign Out" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lnT-ZL-F4h">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="signOutUSer:" target="Voe-Tx-rLC" id="fK3-ys-U0U"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-2365.5" y="119.5"/>
         </customView>
@@ -1208,11 +1216,12 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                 <outlet property="sourcestoRoot" destination="1SW-bc-HiU" id="utr-1Q-IfM"/>
                 <outlet property="srcWin" destination="nUd-z9-lIk" id="M3M-u6-8xD"/>
                 <outlet property="tabAbout" destination="twU-YK-Vpv" id="G8T-lS-bQ1"/>
-                <outlet property="tabAccount" destination="FUO-0U-vIy" id="DKm-Ph-PPM"/>
+                <outlet property="tabAccount" destination="Q7U-f6-ubP" id="pbf-OK-DS6"/>
                 <outlet property="tabFeatured" destination="Iwv-Pr-3lK" id="AF2-GL-n73"/>
                 <outlet property="tabMain" destination="GKs-AR-3Dp" id="WZP-w3-apf"/>
                 <outlet property="tabPlugins" destination="nKi-ng-4zR" id="Wms-Mz-khY"/>
                 <outlet property="tabPreferences" destination="8TP-M5-UWN" id="A9w-Ub-Asv"/>
+                <outlet property="tabSignIn" destination="W6U-QA-lfM" id="k70-WT-nPM"/>
                 <outlet property="tabSources" destination="wze-j9-tSd" id="bvs-yb-Fq0"/>
                 <outlet property="tabSystemInfo" destination="MWR-AF-GZQ" id="SxQ-z1-h6U"/>
                 <outlet property="tabUpdates" destination="yub-aF-INF" id="vVs-Wu-1uc"/>
@@ -1694,7 +1703,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="9sS-3X-65u">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="405"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" viewBased="YES" id="E3Q-ip-sqv">
                                 <rect key="frame" x="0.0" y="0.0" width="560" height="405"/>

@@ -329,7 +329,6 @@ Boolean appSetupFinished = false;
     if (user) {
         NSLog(@"Current signed-in user id: %@", user.uid);
 
-        // XXX Here we can choose the correct form for the user-section and populate it
     } else {
         NSLog(@"No user signed-in.");
     }
@@ -1022,25 +1021,33 @@ Boolean appSetupFinished = false;
 }
 
 - (IBAction)selectView:(id)sender {
+    NSView *v = nil;
+    
     selectedView = sender;
+    
     if ([tabViewButtons containsObject:sender]) {
         NSString *analyticsTitle = [sender title];
         if ([sender isEqualTo:_viewAccount])
             analyticsTitle = @"👨‍💻 Account";
         [MSAnalytics trackEvent:@"Selected View" withProperties:@{@"View" : analyticsTitle}];
         
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-            NSView *v = [tabViews objectAtIndex:[tabViewButtons indexOfObject:sender]];
-            dispatch_async(dispatch_get_main_queue(), ^(void){
-//                [v.layer setBackgroundColor:[NSColor redColor].CGColor];
-                [v setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-                [v setFrame:self->_tabMain.frame];
-                [v setFrameOrigin:NSMakePoint(0, 0)];
-                [v setTranslatesAutoresizingMaskIntoConstraints:true];
-                [self->_tabMain setSubviews:[NSArray arrayWithObject:v]];
-            });
-        });
+        v = [tabViews objectAtIndex:[tabViewButtons indexOfObject:sender]];
     }
+    /* Secondary-views support; not included in tabViewButtons */
+    else if ([sender isEqualTo:_tabSignIn]) {
+        v = _tabSignIn;
+    }
+    
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+        dispatch_async(dispatch_get_main_queue(), ^(void){
+            //                [v.layer setBackgroundColor:[NSColor redColor].CGColor];
+            [v setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+            [v setFrame:self->_tabMain.frame];
+            [v setFrameOrigin:NSMakePoint(0, 0)];
+            [v setTranslatesAutoresizingMaskIntoConstraints:true];
+            [self->_tabMain setSubviews:[NSArray arrayWithObject:v]];
+        });
+    });
     
 //    [_tabFeatured setWantsLayer:true];
 //    [_tabFeatured.layer setBackgroundColor:NSColor.redColor.CGColor];
@@ -1417,6 +1424,9 @@ Boolean appSetupFinished = false;
 }
 
 - (IBAction)signOutUSer:(id)sender {
+    /* force re-draw */
+    [self selectView:_tabSignIn];
+    
     NSError *signOutError;
     
     NSLog(@"Signing-out user: %@", [FIRAuth auth].currentUser.uid);
