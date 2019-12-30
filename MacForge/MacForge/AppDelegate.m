@@ -1409,16 +1409,18 @@ Boolean appSetupFinished = false;
 // XXX Later support Google account (OAuth?)
 
 - (IBAction)signUpUser:(id)sender {
-    NSString *username = _loginUsername.stringValue;
-    NSString *email = _loginEmail.stringValue;
-    NSString *password = _loginPassword.stringValue;
+    NSString *username  = _loginUsername.stringValue;
+    NSString *email     = _loginEmail.stringValue;
+    NSString *password  = _loginPassword.stringValue;
+    NSURL *photoURL     = [NSURL URLWithString:_loginImageURL.stringValue];
     
     MF_accountManager *accountManager = [[MF_accountManager alloc] init];
     
     /* Try to create a new account */
     [accountManager createAccountWithUsername:username
                                         email:email
-                                  andPassword:password
+                                     password:password
+                                  andPhotoURL:photoURL
                         withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
                             if (!err) {
                                 NSLog(@"Got result %@", authResult);
@@ -1442,7 +1444,7 @@ Boolean appSetupFinished = false;
                                  andPassword:password
                        withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
                            if (!err) {
-                               NSLog(@"Got result %@", authResult);
+                               NSLog(@"Successfully created user!");
                                // XXX
                                // We now reload the user's account view
                                // [self selectView:viewAccount];

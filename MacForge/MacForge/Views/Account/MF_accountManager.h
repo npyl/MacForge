@@ -16,7 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)createAccountWithUsername:(NSString *)username
                             email:(NSString *)email
-                      andPassword:(NSString *)password
+                         password:(NSString *)password
+                      andPhotoURL:(NSURL *)photoURL  
             withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler;
 - (void)loginAccountWithUsername:(NSString *)username
                            email:(NSString *)email
