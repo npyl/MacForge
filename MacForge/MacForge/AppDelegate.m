@@ -1423,7 +1423,7 @@ Boolean appSetupFinished = false;
                                   andPhotoURL:photoURL
                         withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
                             if (!err) {
-                                NSLog(@"Got result %@", authResult);
+                                NSLog(@"Successfully created user!");
                             }
                             else {
                                 NSLog(@"%@", err);
@@ -1432,19 +1432,18 @@ Boolean appSetupFinished = false;
 }
 
 - (IBAction)signInUser:(id)sender {
-    NSString *username = _loginUsername.stringValue;
-    NSString *email = _loginEmail.stringValue;
-    NSString *password = _loginPassword.stringValue;
+    NSString *email = _email.stringValue;
+    NSString *password = _password.stringValue;
     
     MF_accountManager *accountManager = [[MF_accountManager alloc] init];
     
     /* Try to log into an account */
-    [accountManager loginAccountWithUsername:username
-                                       email:email
-                                 andPassword:password
-                       withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
+    [accountManager loginAccountWithEmail:email
+                              andPassword:password
+                    withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
                            if (!err) {
-                               NSLog(@"Successfully created user!");
+                               NSLog(@"Successfully signed-in!");
+
                                // XXX
                                // We now reload the user's account view
                                // [self selectView:viewAccount];
@@ -1469,7 +1468,7 @@ Boolean appSetupFinished = false;
     
     NSLog(@"Successfully signed-out.");
     
-    /* force re-draw */
+    /* show sign-in form */
     [self selectView:_tabSignIn];
 }
 

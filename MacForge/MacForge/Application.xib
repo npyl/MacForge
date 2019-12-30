@@ -326,7 +326,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="fireBaseLogin:" target="Voe-Tx-rLC" id="03w-RK-l1V"/>
+                        <action selector="signInUser:" target="Voe-Tx-rLC" id="m3e-ju-zi6"/>
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjD-7a-vCf">
@@ -343,7 +343,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p9o-KO-Dh5">
                     <rect key="frame" x="12" y="275" width="190" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="username" id="vvf-nZ-3yL">
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="email" id="vvf-nZ-3yL">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -422,18 +422,15 @@
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ita-Yu-at0">
                             <rect key="frame" x="156" y="13" width="100" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="Sign In" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MPM-SU-i9Z">
+                            <buttonCell key="cell" type="push" title="Sign In" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MPM-SU-i9Z">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <action selector="signInUser:" target="Voe-Tx-rLC" id="SYh-cf-d85"/>
-                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Gd-Dl-Xzd">
                             <rect key="frame" x="380" y="19" width="88" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="Sign Out" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AHX-Kr-bMk">
+                            <buttonCell key="cell" type="push" title="Sign Out" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AHX-Kr-bMk">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -1199,6 +1196,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                 <outlet property="changeLog" destination="Knp-u7-nXC" id="In7-BS-m9X"/>
                 <outlet property="changesTable" destination="WzJ-Td-64B" id="j0u-6F-JGv"/>
                 <outlet property="discoverChanges" destination="44z-QU-EWF" id="AL2-2e-80E"/>
+                <outlet property="email" destination="zxe-pQ-Boj" id="Tjk-rY-vU1"/>
                 <outlet property="emailButton" destination="u4a-2I-fDn" id="i0M-1f-u7G"/>
                 <outlet property="featuredContentView" destination="seY-T0-xpO" id="Nkv-av-lu3"/>
                 <outlet property="gitButton" destination="Nrm-iX-EzW" id="H91-DS-o2e"/>
@@ -1208,6 +1206,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                 <outlet property="loginPassword" destination="BRj-GK-5LK" id="0OI-jv-HRu"/>
                 <outlet property="loginUID" destination="049-Hv-aKg" id="h1Y-YG-ePP"/>
                 <outlet property="loginUsername" destination="gDf-BV-Cjk" id="qVA-I2-7In"/>
+                <outlet property="password" destination="FPv-6p-ZjN" id="QXs-bj-SGg"/>
                 <outlet property="prefHideMenubar" destination="nPS-f7-ykR" id="veh-qV-lTF"/>
                 <outlet property="prefStartTab" destination="bIL-ul-fcu" id="Rki-UC-dFu"/>
                 <outlet property="prefTips" destination="EKf-xn-hvp" id="DPi-OZ-ijJ"/>

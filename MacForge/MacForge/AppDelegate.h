@@ -142,8 +142,8 @@
 // Account view profile
 //@property IBOutlet NSButton             *login;
 //@property IBOutlet NSButton             *logout;
-//@property IBOutlet NSTextField          *username;
-//@property IBOutlet NSSecureTextField    *password;
+@property IBOutlet NSTextField          *email;
+@property IBOutlet NSSecureTextField    *password;
 
 // Featured view
 @property IBOutlet NSView      *featuredContentView;

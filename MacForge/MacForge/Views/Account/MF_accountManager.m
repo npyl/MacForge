@@ -62,13 +62,12 @@
                              }];
 }
 
-- (void)loginAccountWithUsername:(NSString *)username
-                           email:(NSString *)email
-                     andPassword:(NSString *)password
-    withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler {
+- (void)loginAccountWithEmail:(NSString *)email
+                  andPassword:(NSString *)password
+        withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler {
     
     NSLog(@"Loging-in account:");
-    NSLog(@"%@ (ignored)\n%@\n%@", username, email, password);
+    NSLog(@"\n%@\n%@", email, password);
     
     [[FIRAuth auth] signInWithEmail:email
                            password:password
