@@ -68,7 +68,13 @@
     withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler {
     
     NSLog(@"Loging-in account:");
-    NSLog(@"%@\n%@\n%@", username, email, password);
+    NSLog(@"%@ (ignored)\n%@\n%@", username, email, password);
+    
+    [[FIRAuth auth] signInWithEmail:email
+                           password:password
+                         completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+                             handler(authResult, error);
+                         }];
 }
 
 /*
@@ -112,14 +118,6 @@
 
 - (IBAction)fireBaseLogin:(id)sender {
     FIRUser *user = [FIRAuth auth].currentUser;
-    
-//    FIRUserProfileChangeRequest *changeRequest = [[FIRAuth auth].currentUser profileChangeRequest];
-//    changeRequest.photoURL = [NSURL URLWithString:@"https://avatars3.githubusercontent.com/u/1920148?s=460&v=4"];
-//    changeRequest.displayName = _loginUsername.stringValue;
-//    [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
-//        NSLog(@"%@", error);
-//        // ...
-//    }];
     
     // [END get_user_profile]
     // [START user_profile]
