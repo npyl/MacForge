@@ -1475,4 +1475,14 @@ Boolean appSetupFinished = false;
     [self selectView:_tabRegister];
 }
 
+- (IBAction)setPhotoURL:(id)sender {
+    NSOpenPanel *op = [NSOpenPanel openPanel];
+
+    op.allowsMultipleSelection = NO;
+    op.allowedFileTypes = @[@"jpg", @"png", @"tiff"];
+    [op runModal];
+    
+    _loginImageURL.stringValue = op.URL.absoluteString;
+}
+
 @end

@@ -556,6 +556,17 @@
                         </button>
                     </subviews>
                 </customView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-DO-YNA">
+                    <rect key="frame" x="543" y="283" width="49" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KNu-Xf-JgY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="setPhotoURL:" target="Voe-Tx-rLC" id="IDS-0f-LyA"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-606" y="-1024"/>
         </customView>
