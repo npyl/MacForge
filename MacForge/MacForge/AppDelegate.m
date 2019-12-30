@@ -447,9 +447,28 @@ Boolean appSetupFinished = false;
     NSButton *btn = _viewAccount;
     [btn setWantsLayer:YES];
     [btn setTarget:self];
-    [btn setAction:@selector(selectView:)];
-    _imgAccount.image = [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].image;
-    _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
+
+    // (npyl): move this to event handler (when we introduce it...)
+    /* check if a user is signed-in */
+    if (_user) {
+        NSURL *photoURL = _user.photoURL;
+        NSString *displayName = _user.displayName;
+        
+        if (displayName) {
+            _viewAccount.title = [NSString stringWithFormat:@"                    %@", displayName];
+        } else {
+            _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
+        }
+
+        if (photoURL)
+            _imgAccount.image = [NSImage sd_imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+    }
+    /* no user signed-in; going with OS user */
+    else {
+        _imgAccount.image = [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].image;
+        _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
+    }
+
     [_imgAccount setWantsLayer: YES];
     _imgAccount.layer.cornerRadius = _imgAccount.layer.frame.size.height/2;
     _imgAccount.layer.masksToBounds = YES;

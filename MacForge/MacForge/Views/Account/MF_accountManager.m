@@ -34,15 +34,13 @@
                                  handler(authResult, err);
                              }];
 }
-- (BOOL)loginAccountWithUsername:(NSString *)username
+- (void)loginAccountWithUsername:(NSString *)username
                            email:(NSString *)email
                      andPassword:(NSString *)password
     withCompletionHandler:(void (^)(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err))handler {
     
     NSLog(@"Loging-in account:");
     NSLog(@"%@\n%@\n%@", username, email, password);
-    
-    return NO;
 }
 
 /*
