@@ -1454,9 +1454,6 @@ Boolean appSetupFinished = false;
 }
 
 - (IBAction)signOutUSer:(id)sender {
-    /* force re-draw */
-    [self selectView:_tabSignIn];
-    
     NSError *signOutError;
     
     NSLog(@"Signing-out user: %@", [FIRAuth auth].currentUser.uid);
@@ -1469,6 +1466,9 @@ Boolean appSetupFinished = false;
     }
     
     NSLog(@"Successfully signed-out.");
+    
+    /* force re-draw */
+    [self selectView:_tabSignIn];
 }
 
 - (IBAction)openRegisterForm:(id)sender {
