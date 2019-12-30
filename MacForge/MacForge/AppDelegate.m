@@ -347,6 +347,11 @@ Boolean appSetupFinished = false;
     /* Configure Firebase */
     [FIRApp configure];
     
+    /* Setup our handler for Authenthication events */
+    [[FIRAuth auth] addAuthStateDidChangeListener:^(FIRAuth *_Nonnull auth, FIRUser *_Nullable user) {
+        [self updateUserButtonWithUser:user andAuth:auth];
+    }];
+
     /* Get signed-in user */
     _user = [FIRAuth auth].currentUser;
     
@@ -412,6 +417,33 @@ Boolean appSetupFinished = false;
     [MSAnalytics trackEvent:@"Application Closing"];
 }
 
+// Updates title and photo of user on sidebar upon FIRAuth event
+- (void)updateUserButtonWithUser:(FIRUser *)user andAuth:(FIRAuth *)auth {
+    NSLog(@"Auth-event for user: %@", user.displayName);
+    
+    _user = user;
+    
+    /* check if a user is signed-in */
+    if (_user) {
+        NSURL *photoURL = _user.photoURL;
+        NSString *displayName = _user.displayName;
+        
+        if (displayName) {
+            _viewAccount.title = [NSString stringWithFormat:@"                    %@", displayName];
+        } else {
+            _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
+        }
+        
+        if (photoURL)
+            _imgAccount.image = [NSImage sd_imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+    }
+    /* no user signed-in; going with OS user */
+    else {
+        _imgAccount.image = [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].image;
+        _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
+    }
+}
+
 - (NSMutableDictionary *)getmyPrefs {
     return [[NSMutableDictionary alloc] initWithDictionary:[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]];
 }
@@ -447,28 +479,8 @@ Boolean appSetupFinished = false;
     NSButton *btn = _viewAccount;
     [btn setWantsLayer:YES];
     [btn setTarget:self];
-
-    // (npyl): move this to event handler (when we introduce it...)
-    /* check if a user is signed-in */
-    if (_user) {
-        NSURL *photoURL = _user.photoURL;
-        NSString *displayName = _user.displayName;
-        
-        if (displayName) {
-            _viewAccount.title = [NSString stringWithFormat:@"                    %@", displayName];
-        } else {
-            _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
-        }
-
-        if (photoURL)
-            _imgAccount.image = [NSImage sd_imageWithData:[NSData dataWithContentsOfURL:photoURL]];
-    }
-    /* no user signed-in; going with OS user */
-    else {
-        _imgAccount.image = [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].image;
-        _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
-    }
-
+    _imgAccount.image = [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].image;
+    _viewAccount.title = [NSString stringWithFormat:@"                    %@", [CBIdentity identityWithName:NSUserName() authority:[CBIdentityAuthority defaultIdentityAuthority]].fullName];
     [_imgAccount setWantsLayer: YES];
     _imgAccount.layer.cornerRadius = _imgAccount.layer.frame.size.height/2;
     _imgAccount.layer.masksToBounds = YES;
