@@ -18,6 +18,8 @@
 @import AppCenterAnalytics;
 @import AppCenterCrashes;
 
+@import FirebaseAuth;
+
 // MacForgeKit
 @import MacForgeKit;
 
@@ -35,6 +37,8 @@
 @interface AppDelegate : NSObject <NSSearchFieldDelegate> {
     NSMutableArray *watchdogs;
     PluginManager *_sharedMethods;
+    
+    FIRUser *_user;  // Firebase User
 }
 
 @property IBOutlet NSWindow *window;
@@ -55,6 +59,7 @@
 @property IBOutlet NSView *tabAbout;
 @property IBOutlet NSView *tabAccount;
 @property IBOutlet NSView *tabSignIn;
+@property IBOutlet NSView *tabRegister;
 @property IBOutlet NSView *tabPlugins;
 @property IBOutlet NSView *tabPreferences;
 @property IBOutlet NSView *tabSources;

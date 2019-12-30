@@ -318,20 +318,6 @@ Boolean appSetupFinished = false;
     NSDate *methodFinish = [NSDate date];
     NSTimeInterval executionTime = [methodFinish timeIntervalSinceDate:appStart];
     NSLog(@"Launch time : %f Seconds", executionTime);
-    
-    /* Configure Firebase */
-    [FIRApp configure];
-
-    /* Get signed-in user */
-    FIRUser *user = [FIRAuth auth].currentUser;
-
-    /* Check if there actually is someone signed-in */
-    if (user) {
-        NSLog(@"Current signed-in user id: %@", user.uid);
-
-    } else {
-        NSLog(@"No user signed-in.");
-    }
 }
 
 - (void)executionTime:(NSString*)s {
@@ -357,6 +343,19 @@ Boolean appSetupFinished = false;
     
     // Crash on exceptions?
     [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"NSApplicationCrashOnExceptions": [NSNumber numberWithBool:true]}];
+    
+    /* Configure Firebase */
+    [FIRApp configure];
+    
+    /* Get signed-in user */
+    _user = [FIRAuth auth].currentUser;
+    
+    /* Check if there actually is someone signed-in */
+    if (_user) {
+        NSLog(@"Current signed-in user id: %@", _user.uid);
+    } else {
+        NSLog(@"No user signed-in.");
+    }
     
     sourceItems = [NSArray arrayWithObjects:_sourcesURLS, _sourcesPlugins, _sourcesBundle, nil];
     discoverItems = [NSArray arrayWithObjects:_discoverChanges, _sourcesBundle, nil];
@@ -1039,7 +1038,13 @@ Boolean appSetupFinished = false;
         [MSAnalytics trackEvent:@"Selected View" withProperties:@{@"View" : analyticsTitle}];
         
         v = _tabSignIn;
+    } else if ([sender isEqualTo:_tabRegister]) {
+        v = _tabRegister;
     }
+    
+    /* Oops; This shouldn't happen */
+    if (!v)
+        return;
     
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
         dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -1419,6 +1424,9 @@ Boolean appSetupFinished = false;
                        withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
                            if (!err) {
                                NSLog(@"Got result %@", authResult);
+                               // XXX
+                               // We now reload the user's account view
+                               // [self selectView:viewAccount];
                            }
                            else {
                                NSLog(@"%@", err);
@@ -1442,6 +1450,10 @@ Boolean appSetupFinished = false;
     }
     
     NSLog(@"Successfully signed-out.");
+}
+
+- (IBAction)openRegisterForm:(id)sender {
+    [self selectView:_tabRegister];
 }
 
 @end

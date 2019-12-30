@@ -332,10 +332,13 @@
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjD-7a-vCf">
                     <rect key="frame" x="300" y="204" width="100" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Log out" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dgB-vq-zQz">
+                    <buttonCell key="cell" type="push" title="Register" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dgB-vq-zQz">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="openRegisterForm:" target="Voe-Tx-rLC" id="EgL-t2-RfC"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p9o-KO-Dh5">
                     <rect key="frame" x="12" y="275" width="190" height="17"/>
@@ -587,7 +590,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="oGH-14-Lhi">
                         <rect key="frame" x="1" y="0.0" width="566" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ghc-3x-OmY" viewBased="YES" id="4xF-cC-8lT">
                                 <rect key="frame" x="0.0" y="0.0" width="566" height="350"/>
@@ -1221,6 +1224,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                 <outlet property="tabMain" destination="GKs-AR-3Dp" id="WZP-w3-apf"/>
                 <outlet property="tabPlugins" destination="nKi-ng-4zR" id="Wms-Mz-khY"/>
                 <outlet property="tabPreferences" destination="8TP-M5-UWN" id="A9w-Ub-Asv"/>
+                <outlet property="tabRegister" destination="FUO-0U-vIy" id="xbn-vI-kO1"/>
                 <outlet property="tabSignIn" destination="W6U-QA-lfM" id="k70-WT-nPM"/>
                 <outlet property="tabSources" destination="wze-j9-tSd" id="bvs-yb-Fq0"/>
                 <outlet property="tabSystemInfo" destination="MWR-AF-GZQ" id="SxQ-z1-h6U"/>
@@ -1703,7 +1707,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="9sS-3X-65u">
                         <rect key="frame" x="0.0" y="0.0" width="560" height="405"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="40" rowSizeStyle="automatic" viewBased="YES" id="E3Q-ip-sqv">
                                 <rect key="frame" x="0.0" y="0.0" width="560" height="405"/>
