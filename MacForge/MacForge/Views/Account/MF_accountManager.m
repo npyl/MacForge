@@ -54,10 +54,8 @@
                                  changeRequest.displayName = username;
                                  
                                  [changeRequest commitChangesWithCompletion:^(NSError *_Nullable _error) {
-                                     // (npyl): talk to wolf about setting authResult to (-1) as an internal way of understanding that the problem happened during the change phase; there is no other way of knowing this unless we analyse the error nicely.
-                                     
                                      /* call handler */
-                                     handler(nil, _error);
+                                     handler(authResult, _error);
                                  }];
                              }];
 }

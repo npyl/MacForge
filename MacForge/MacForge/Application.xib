@@ -598,7 +598,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="oGH-14-Lhi">
                         <rect key="frame" x="1" y="0.0" width="566" height="375"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ghc-3x-OmY" viewBased="YES" id="4xF-cC-8lT">
                                 <rect key="frame" x="0.0" y="0.0" width="566" height="350"/>
@@ -705,27 +705,31 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaC-Qz-RTP">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zaC-Qz-RTP">
                     <rect key="frame" x="220" y="166" width="160" height="168"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="168" id="jmU-yS-8TV"/>
+                        <constraint firstAttribute="width" constant="156" id="x11-yX-xZL"/>
+                    </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="🚧" id="qoX-Bn-JLN">
                         <font key="font" size="144" name="HelveticaNeue"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gao-SN-Wo2">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gao-SN-Wo2">
                     <rect key="frame" x="213" y="148" width="175" height="23"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="23" id="gdW-ZE-rDc"/>
+                    </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Under Construction" id="sxU-8u-PVi">
                         <font key="font" metaFont="system" size="20"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOu-ln-qaI">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YOu-ln-qaI">
                     <rect key="frame" x="499" y="452" width="93" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Sign Out" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lnT-ZL-F4h">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -735,6 +739,14 @@
                     </connections>
                 </button>
             </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gao-SN-Wo2" secondAttribute="bottom" constant="148" id="9gj-og-vOY"/>
+                <constraint firstItem="zaC-Qz-RTP" firstAttribute="centerY" secondItem="Q7U-f6-ubP" secondAttribute="centerY" id="G7h-gW-4pb"/>
+                <constraint firstItem="zaC-Qz-RTP" firstAttribute="centerX" secondItem="gao-SN-Wo2" secondAttribute="centerX" id="Qdm-0o-xT6"/>
+                <constraint firstAttribute="trailing" secondItem="YOu-ln-qaI" secondAttribute="trailing" constant="14" id="XUv-FZ-hg7"/>
+                <constraint firstItem="YOu-ln-qaI" firstAttribute="top" secondItem="Q7U-f6-ubP" secondAttribute="top" constant="20" symbolic="YES" id="YH3-g1-n4q"/>
+                <constraint firstItem="zaC-Qz-RTP" firstAttribute="centerX" secondItem="Q7U-f6-ubP" secondAttribute="centerX" id="aYl-no-ym8"/>
+            </constraints>
             <point key="canvasLocation" x="-2365.5" y="119.5"/>
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
@@ -784,7 +796,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="DVZ-JD-MKi">
                         <rect key="frame" x="1" y="1" width="314" height="633"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" rowHeight="30" rowSizeStyle="automatic" viewBased="YES" id="efl-VW-IC0" customClass="blacklistTable">
                                 <rect key="frame" x="0.0" y="0.0" width="314" height="633"/>

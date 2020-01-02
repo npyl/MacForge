@@ -349,7 +349,7 @@ Boolean appSetupFinished = false;
     
     /* Setup our handler for Authenthication events */
     [[FIRAuth auth] addAuthStateDidChangeListener:^(FIRAuth *_Nonnull auth, FIRUser *_Nullable user) {
-        _user = user;
+        self->_user = user;
         
         [self updateUserButtonWithUser:user andAuth:auth];
 
@@ -1439,6 +1439,10 @@ Boolean appSetupFinished = false;
                         withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
                             if (!err) {
                                 NSLog(@"Successfully created user!");
+                                
+                                dispatch_async(dispatch_get_main_queue(), ^{
+                                    self->_loginUID.stringValue = authResult.user.uid;
+                                });
                             }
                             else {
                                 NSLog(@"%@", err);
