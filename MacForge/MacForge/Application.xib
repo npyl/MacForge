@@ -598,7 +598,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="oGH-14-Lhi">
                         <rect key="frame" x="1" y="0.0" width="566" height="375"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="ghc-3x-OmY" viewBased="YES" id="4xF-cC-8lT">
                                 <rect key="frame" x="0.0" y="0.0" width="566" height="350"/>
@@ -731,7 +731,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="signOutUSer:" target="Voe-Tx-rLC" id="fK3-ys-U0U"/>
+                        <action selector="signInOrOut:" target="Voe-Tx-rLC" id="tl6-xE-3fv"/>
                     </connections>
                 </button>
             </subviews>
@@ -1218,6 +1218,7 @@ nvram boot-args="amfi_get_out_of_my_way=1"
                 <outlet property="showChanges" destination="7BD-ed-xfg" id="zK9-tc-7Zw"/>
                 <outlet property="showCredits" destination="p2E-c2-Z4Y" id="h7V-kT-vgq"/>
                 <outlet property="showEULA" destination="0hi-ZT-WvU" id="uox-ak-ecY"/>
+                <outlet property="signInOrOutButton" destination="YOu-ln-qaI" id="b4a-v7-omi"/>
                 <outlet property="sourceButton" destination="pfy-yL-OqU" id="dx2-sL-5VD"/>
                 <outlet property="sourcesAdd" destination="SK8-q6-wTM" id="XWB-fj-dL3"/>
                 <outlet property="sourcesBundle" destination="vTA-xu-W37" id="sfb-rQ-RJD"/>

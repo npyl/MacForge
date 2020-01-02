@@ -139,6 +139,9 @@
 @property IBOutlet NSTextField          *loginUsername;
 @property IBOutlet NSSecureTextField    *loginPassword;
 
+// Under Construction
+@property IBOutlet NSButton             *signInOrOutButton;
+
 // Account view profile
 //@property IBOutlet NSButton             *login;
 //@property IBOutlet NSButton             *logout;

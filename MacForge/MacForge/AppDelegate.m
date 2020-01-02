@@ -349,7 +349,12 @@ Boolean appSetupFinished = false;
     
     /* Setup our handler for Authenthication events */
     [[FIRAuth auth] addAuthStateDidChangeListener:^(FIRAuth *_Nonnull auth, FIRUser *_Nullable user) {
+        _user = user;
+        
         [self updateUserButtonWithUser:user andAuth:auth];
+
+        /* Update the Under Construction view's login/logout button */
+        self->_signInOrOutButton.title = (self->_user) ? @"Sign Out" : @"Sign In";
     }];
 
     /* Get signed-in user */
@@ -420,8 +425,6 @@ Boolean appSetupFinished = false;
 // Updates title and photo of user on sidebar upon FIRAuth event
 - (void)updateUserButtonWithUser:(FIRUser *)user andAuth:(FIRAuth *)auth {
     NSLog(@"Auth-event for user: %@", user.displayName);
-    
-    _user = user;
     
     /* check if a user is signed-in */
     if (_user) {
@@ -1456,9 +1459,7 @@ Boolean appSetupFinished = false;
                            if (!err) {
                                NSLog(@"Successfully signed-in!");
 
-                               // XXX
-                               // We now reload the user's account view
-                               // [self selectView:viewAccount];
+                               [self selectView:self->_viewAccount];
                            }
                            else {
                                NSLog(@"%@", err);
@@ -1482,6 +1483,13 @@ Boolean appSetupFinished = false;
     
     /* show sign-in form */
     [self selectView:_tabSignIn];
+}
+
+- (IBAction)signInOrOut:(id)sender {
+    if (_user)
+        [self signOutUSer:sender];
+    else
+        [self selectView:_tabSignIn];
 }
 
 - (IBAction)openRegisterForm:(id)sender {
