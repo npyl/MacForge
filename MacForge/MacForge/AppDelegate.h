@@ -22,7 +22,7 @@
 
 // Firebase
 @import FirebaseCore;
-//@import FirebaseDatabase;
+@import FirebaseDatabase;
 //@import FirebaseFirestore;
 @import FirebaseAuth;
 //@import FirebaseStorage;
@@ -47,7 +47,9 @@
 @interface AppDelegate : NSObject <NSSearchFieldDelegate> {
     NSMutableArray *watchdogs;
     PluginManager *_sharedMethods;
+    
     FIRUser *_user;  // Firebase User
+    
 }
 
 @property IBOutlet NSWindow *window;
