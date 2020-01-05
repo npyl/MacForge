@@ -1454,6 +1454,7 @@ Boolean appSetupFinished = false;
         }
         else {
             NSLog(@"%@", err);
+            NSModalResponse res = [NSAlert alertWithError:err].runModal;
         }
     }];
 }
@@ -1467,10 +1468,12 @@ Boolean appSetupFinished = false;
     /* Try to update account */
     [accountManager updateAccountWithUsername:username andPhotoURL:photoURL withCompletionHandler:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable err) {
         if (!err) {
+            NSLog(@"Successfully updated info!");
+
             [self updateUserButtonWithUser:self->_user andAuth:nil];
-            NSLog(@"Successfully signed-in!");
         } else {
             NSLog(@"%@", err);
+            NSModalResponse res = [NSAlert alertWithError:err].runModal;
         }
     }];
 }
@@ -1492,6 +1495,7 @@ Boolean appSetupFinished = false;
         }
         else {
             NSLog(@"%@", err);
+            NSModalResponse res = [NSAlert alertWithError:err].runModal;
         }
     }];
 }
@@ -1505,6 +1509,7 @@ Boolean appSetupFinished = false;
     
     if (!status) {
         NSLog(@"Error signing out: %@", signOutError);
+        NSModalResponse res = [NSAlert alertWithError:signOutError].runModal;
         return;
     }
     
